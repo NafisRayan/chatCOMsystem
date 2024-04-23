@@ -1,0 +1,16 @@
+<!-- templates/messages.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="messages-container">
+    <h2>Your Messages</h2>
+    <ul>
+        {% for message in messages %}
+        <li>
+            <strong>{{ message.sender }}:</strong> {{ message.message }}
+            <span class="timestamp">{{ message.timestamp }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

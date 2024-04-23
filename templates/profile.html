@@ -1,0 +1,13 @@
+<!-- templates/profile.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="profile-container">
+    <h2>Profile</h2>
+    <p>Username: {{ user.username }}</p>
+    <!-- Add more profile information here -->
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <a href="{{ url_for('chat') }}">Go to Chat</a><a href="{{ url_for('chat_with_user', username=user.username) }}">Chat with User</a>
+    <a href="{{ url_for('view_messages') }}">View Messages</a>
+</div>
+{% endblock %}

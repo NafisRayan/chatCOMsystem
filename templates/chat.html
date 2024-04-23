@@ -1,0 +1,39 @@
+<!-- templates/chat.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="chat-container">
+    <h2>Global Chat</h2>
+    <div id="messages">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Type a message...">
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+        socket.on('message', function(msg) {
+            var node = document.createElement('li');
+            var textnode = document.createTextNode(msg);
+            node.appendChild(textnode);
+            document.getElementById('messages').appendChild(node);
+        });
+
+        document.getElementById('messageForm').onsubmit = function(e) {
+            e.preventDefault();
+            var username = "{{ session['username'] }}"; // Assuming username is stored in session
+            var message = document.getElementById('messageInput').value;
+            var fullMessage = username + ": " + message; // Prepend username to message
+            socket.emit('message', fullMessage);
+            document.getElementById('messageInput').value = '';
+        };
+    });
+</script>
+{% endblock %}

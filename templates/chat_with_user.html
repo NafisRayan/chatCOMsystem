@@ -1,0 +1,30 @@
+<!-- templates/chat_with_user.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="chat-container">
+    <h2>Send a Message</h2>
+    <form id="messageForm">
+        <label for="receiverInput">To:</label>
+        <input type="text" id="receiverInput" name="receiver" placeholder="Receiver's username" required>
+        <label for="messageInput">Message:</label>
+        <input type="text" id="messageInput" name="message" placeholder="Type your message..." required>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+
+        document.getElementById('messageForm').onsubmit = function(e) {
+            e.preventDefault();
+            var receiver = document.getElementById('receiverInput').value;
+            var message = document.getElementById('messageInput').value;
+            socket.emit('private_message', {receiver: receiver, message: message});
+            document.getElementById('messageInput').value = ''; // Clear the message input
+        };
+    });
+</script>
+{% endblock %}
