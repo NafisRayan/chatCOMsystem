@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, s
 from flask_socketio import SocketIO, emit
 import json
 from datetime import datetime
+from flask import flash
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key' # Replace 'your_secret_key' with a secure key
@@ -56,7 +57,7 @@ def save_private_chat_messages(messages):
 
 @app.route('/')
 def home():
-    return redirect(url_for('login'))
+    return render_template('home.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -79,11 +80,13 @@ def register():
         password = request.form['password']
         for user in users['user']:
             if user['username'] == username:
-                return "Username already exists", 400
+                flash('Username already exists', 'error')
+                return redirect(url_for('register'))
         new_user = {"username": username, "password": password}
         users['user'].append(new_user)
         save_users(users)
-        return redirect(url_for('profile', username=username))
+        flash('Registration successful. Please log in.', 'success')
+        return redirect(url_for('login'))
     return render_template('register.html')
 
 @app.route('/profile/<username>')
