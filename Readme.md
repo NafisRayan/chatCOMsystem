@@ -2,6 +2,8 @@
 
 This repository contains the source code for a simple yet feature-rich chat application built with Flask and Socket.IO. The application allows users to register, login, participate in a global chat room, send private messages to other users, and view their message history.
 
+![Chat Application Interface](https://github.com/NafisRayan/chatCOMsystem/blob/main/statics/chatCom.png)
+
 ## Features
 
 - **User Registration and Login**: Users can create accounts and log in to access the chat functionalities.
