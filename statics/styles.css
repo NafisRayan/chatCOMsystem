@@ -3,8 +3,10 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #282c34; /* Darker background */
-    color: #abb2bf; /* Light text */
+    background-color: #282c34;
+    /* Darker background */
+    color: #abb2bf;
+    /* Light text */
     margin: 0;
     padding: 0;
     display: flex;
@@ -13,21 +15,25 @@ body {
 }
 
 nav {
-    background-color: #383d44; /* Darker nav background */
-    color: #abb2bf; /* Light text */
+    background-color: #383d44;
+    /* Darker nav background */
+    color: #abb2bf;
+    /* Light text */
     padding: 15px;
     text-align: center;
     width: 100%;
 }
 
 nav a {
-    color: #abb2bf; /* Light text */
+    color: #abb2bf;
+    /* Light text */
     margin: 0 15px;
     text-decoration: none;
 }
 
 nav a:hover {
-    color: #61afef; /* Blue text on hover */
+    color: #61afef;
+    /* Blue text on hover */
 }
 
 .container {
@@ -35,11 +41,17 @@ nav a:hover {
     margin: 0 auto;
     padding: 20px;
     flex: 1;
-    background-color: #282c34; /* Darker container background */
+    background-color: #282c34;
+    /* Darker container background */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-container, .register-container, .profile-container, .chat-container {
-    background-color: #282c34; /* Darker container background */
+.login-container,
+.register-container,
+.profile-container {
+    background-color: #282c34;
+    /* Darker container background */
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -51,20 +63,25 @@ form {
     flex-direction: column;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"],
+input[type="password"] {
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #4a4a4a;
     border-radius: 5px;
-    background-color: #3a3a3a; /* Darker input background */
-    color: #abb2bf; /* Light text */
+    background-color: #3a3a3a;
+    /* Darker input background */
+    color: #abb2bf;
+    /* Light text */
     width: 100%;
 }
 
 input[type="submit"] {
     padding: 10px;
-    background-color: #61afef; /* Blue submit button */
-    color: #abb2bf; /* Light text */
+    background-color: #61afef;
+    /* Blue submit button */
+    color: #abb2bf;
+    /* Light text */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -73,7 +90,8 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #51a8fa; /* Darker blue on hover */
+    background-color: #51a8fa;
+    /* Darker blue on hover */
 }
 
 #messages {
@@ -83,7 +101,8 @@ input[type="submit"]:hover {
     padding: 10px;
     margin-bottom: 10px;
     background: linear-gradient(to bottom, #383d44, #282c34);
-    color: #abb2bf; /* Light text */
+    color: #abb2bf;
+    /* Light text */
     border-radius: 10px;
 }
 
@@ -93,12 +112,16 @@ input[type="submit"]:hover {
         padding: 10px;
     }
 
-    .login-container, .register-container, .profile-container, .chat-container {
+    .chat-container,
+    .login-container,
+    .register-container,
+    .profile-container {
         width: 100%;
         margin-bottom: 10px;
     }
 
-    input[type="text"], input[type="password"] {
+    input[type="text"],
+    input[type="password"] {
         margin-bottom: 10px;
     }
 }
@@ -108,7 +131,10 @@ input[type="submit"]:hover {
         padding: 40px;
     }
 
-    .login-container, .register-container, .profile-container, .chat-container {
+    .chat-container,
+    .login-container,
+    .register-container,
+    .profile-container {
         width: 80%;
         margin-bottom: 20px;
     }
