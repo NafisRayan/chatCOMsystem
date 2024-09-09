@@ -15,14 +15,14 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
-        document.getElementById('messageForm').onsubmit = function(e) {
+        document.getElementById('messageForm').onsubmit = function (e) {
             e.preventDefault();
             var receiver = document.getElementById('receiverInput').value;
             var message = document.getElementById('messageInput').value;
-            socket.emit('private_message', {receiver: receiver, message: message});
+            socket.emit('private_message', { receiver: receiver, message: message });
             document.getElementById('messageInput').value = ''; // Clear the message input
         };
     });

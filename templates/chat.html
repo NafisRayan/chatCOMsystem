@@ -2,24 +2,21 @@
 {% extends "base.html" %}
 
 {% block content %}
-<center>
-    <div style="width:80%; margin-bottom: 20px;">
-        <h2 style="color: #f0f0f0;">Global Chat</h2>
-        <div id="messages"
-            style="height: 300px; overflow-y: scroll; border: 1px solid #abb2bf; padding: 7px; margin-bottom: 10px; background: linear-gradient(to bottom, #abb2bf65, #282c3463); color: #000000; border-radius: 10px;">
-            {% for message in messages %}
-            <p style="margin: 5px 0; padding: 5px; border-radius: 5px; background-color: #3a3a3a; color: #f0f0f0;">{{
-                message }}</p>
-            {% endfor %}
-        </div>
-        <form id="messageForm" style="display: flex; flex-direction: column; padding: 10px;">
-            <input type="text" id="messageInput" placeholder="Type a message..."
-                style="padding: 10px; border: 1px solid #cccccc; border-radius: 5px; background-color: #f0f0f0; color: #a8e6f7c5; width: 100%;">
-            <button type="submit"
-                style="padding: 10px; background-color: #003d6f; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Send</button>
-        </form>
+
+<div>
+    <h2>Global Chat</h2>
+    <div id="messages">
+        {% for message in messages %}
+        <p>{{
+            message }}</p>
+        {% endfor %}
     </div>
-</center>
+    <form id="messageForm">
+        <input type="text" id="messageInput" placeholder="Type a message...">
+        <button type="submit">Send</button>
+    </form>
+</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
 <script>
