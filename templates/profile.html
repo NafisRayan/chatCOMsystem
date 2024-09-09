@@ -2,14 +2,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="profile-container">
-    <h2>Profile</h2>
-    <p>Username: {{ user.username }}</p>
+<div class="profile-container"
+    style="max-width: 600px; margin: 40px auto; padding: 20px; background-color: #2f3136; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: center;">
+    <h2 style="color: #ffffff; margin-bottom: 20px;">Profile</h2>
+    <p style="color: #dcddde; font-size: 16px; margin-bottom: 20px;">Username: <strong style="color: #7289da;">{{
+            user.username }}</strong></p>
 
-    <button onclick="window.location.href='{{ url_for('chat') }}'">Global Chat</button><br />
-    <button onclick="window.location.href='{{ url_for('chat_with_user', username=user.username) }}'">Chat with
-        User</button><br />
-    <button onclick="window.location.href='{{ url_for('view_messages') }}'">View Messages</button><br />
-    <button onclick="window.location.href='{{ url_for('logout') }}'">Logout</button><br />
+    <button onclick="window.location.href='{{ url_for('chat') }}'"
+        style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #7289da; color: #ffffff; font-size: 16px; cursor: pointer; margin: 10px 0; transition: background-color 0.3s;">
+        Global Chat
+    </button><br />
+    <button onclick="window.location.href='{{ url_for('chat_with_user', username=user.username) }}'"
+        style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #43b581; color: #ffffff; font-size: 16px; cursor: pointer; margin: 10px 0; transition: background-color 0.3s;">
+        Chat with User
+    </button><br />
+    <button onclick="window.location.href='{{ url_for('view_messages') }}'"
+        style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #7289da; color: #ffffff; font-size: 16px; cursor: pointer; margin: 10px 0; transition: background-color 0.3s;">
+        View Messages
+    </button><br />
+    <button onclick="window.location.href='{{ url_for('logout') }}'"
+        style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #f04747; color: #ffffff; font-size: 16px; cursor: pointer; margin: 10px 0; transition: background-color 0.3s;">
+        Logout
+    </button><br />
 </div>
 {% endblock %}

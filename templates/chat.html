@@ -3,30 +3,41 @@
 
 {% block content %}
 
-<div>
-    <h2>Global Chat</h2>
-    <div id="messages">
+<div
+    style="max-width: 800px; margin: 20px auto; padding: 20px; background-color: #2f3136; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+    <h2 style="color: #ffffff; border-bottom: 1px solid #484b4f; padding-bottom: 10px; margin-bottom: 20px;">Global Chat
+    </h2>
+    <div id="messages"
+        style="background-color: #36393f; color: #dcddde; padding: 15px; border-radius: 5px; height: 400px; overflow-y: scroll; margin-bottom: 20px;">
         {% for message in messages %}
-        <p>{{
-            message }}</p>
+        <p
+            style="margin: 0 0 10px 0; padding: 5px; border-radius: 5px; background-color: #4f545c; color: #ffffff; display: inline-block;">
+            {{ message }}</p>
         {% endfor %}
     </div>
-    <form id="messageForm">
-        <input type="text" id="messageInput" placeholder="Type a message...">
-        <button type="submit">Send</button>
+    <form id="messageForm" style="display: flex; align-items: center;">
+        <input type="text" id="messageInput" placeholder="Type a message..."
+            style="flex: 1; padding: 10px; border: 1px solid #484b4f; border-radius: 5px; background-color: #40444b; color: #dcddde; font-size: 14px; outline: none; margin-right: 10px;">
+        <button type="submit"
+            style="padding: 10px 15px; border: none; border-radius: 5px; background-color: #7289da; color: #ffffff; font-size: 14px; cursor: pointer; transition: background-color 0.3s;">Send</button>
     </form>
 </div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
         socket.on('message', function (msg) {
-            var node = document.createElement('li');
-            var textnode = document.createTextNode(msg);
-            node.appendChild(textnode);
+            var node = document.createElement('p');
+            node.style.margin = '0 0 10px 0';
+            node.style.padding = '5px';
+            node.style.borderRadius = '5px';
+            node.style.backgroundColor = '#4f545c';
+            node.style.color = '#ffffff';
+            node.style.display = 'inline-block';
+            node.textContent = msg;
             document.getElementById('messages').appendChild(node);
+            document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight; // Auto scroll to bottom
         });
 
         document.getElementById('messageForm').onsubmit = function (e) {

@@ -5,17 +5,23 @@
     <title>Chat App</title>
 </head>
 
-<body>
-    <nav>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('login') }}">Login</a>
-        <a href="{{ url_for('register') }}">Register</a>
+<body
+    style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #36393f; color: #dcddde; margin: 0; padding: 0;">
+    <nav
+        style="background-color: #2f3136; padding: 10px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #484b4f;">
+        <a href="{{ url_for('home') }}"
+            style="color: #dcddde; text-decoration: none; font-size: 16px; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s; hover: background-color: #40444b;">Home</a>
+        <a href="{{ url_for('login') }}"
+            style="color: #dcddde; text-decoration: none; font-size: 16px; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s; hover: background-color: #40444b;">Login</a>
+        <a href="{{ url_for('register') }}"
+            style="color: #dcddde; text-decoration: none; font-size: 16px; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s; hover: background-color: #40444b;">Register</a>
     </nav>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
     {% for category, message in messages %}
-    <div class="alert alert-{{ category }}">
+    <div class="alert alert-{{ category }}"
+        style="background-color: #7289da; color: #ffffff; padding: 15px; margin: 10px; border-radius: 5px; font-size: 14px; border: 1px solid #677bc4;">
         {{ message }}
     </div>
     {% endfor %}
