@@ -2,45 +2,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-<head>
-    <style>
-        .profile-container {
-            max-width: 30%;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+<div class="profile-container"
+    style="max-width: 600px; margin: 40px auto; padding: 20px; background-color: #2f3136; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: center;">
+    <h2 style="color: #ffffff; margin-bottom: 20px;">Profile</h2>
+    <p style="color: #dcddde; font-size: 16px; margin-bottom: 20px;">Username: <strong style="color: #7289da;">{{
+            user.username }}</strong></p>
 
-        .profile-container button {
-            background-color: #4CAF50; /* Green */
-            border: none;
-            color: white;
-            padding: 10px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .profile-container button:hover {
-            background-color: #45a049; /* Darker green on hover */
-        }
-    </style>
-</head>
-<div class="profile-container">
-    <h2>Profile</h2>
-    <p>Username: {{ user.username }}</p>
-    <!-- Add more profile information here -->
-    
-    <button onclick="window.location.href='{{ url_for('chat') }}'">Global Chat</button><br/>
-    <button onclick="window.location.href='{{ url_for('chat_with_user', username=user.username) }}'">Chat with User</button><br/>
-    <button onclick="window.location.href='{{ url_for('view_messages') }}'">View Messages</button><br/>
-    <button onclick="window.location.href='{{ url_for('logout') }}'">Logout</button><br/>
+    <button onclick="window.location.href='{{ url_for('chat') }}'"
+        style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #7289da; color: #ffffff; font-size: 16px; cursor: pointer; margin: 10px 0; transition: background-color 0.3s;">
+        Global Chat
+    </button><br />
+    <button onclick="window.location.href='{{ url_for('chat_with_user', username=user.username) }}'"
+        style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #43b581; color: #ffffff; font-size: 16px; cursor: pointer; margin: 10px 0; transition: background-color 0.3s;">
+        Chat with User
+    </button><br />
+    <button onclick="window.location.href='{{ url_for('view_messages') }}'"
+        style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #7289da; color: #ffffff; font-size: 16px; cursor: pointer; margin: 10px 0; transition: background-color 0.3s;">
+        View Messages
+    </button><br />
+    <button onclick="window.location.href='{{ url_for('logout') }}'"
+        style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #f04747; color: #ffffff; font-size: 16px; cursor: pointer; margin: 10px 0; transition: background-color 0.3s;">
+        Logout
+    </button><br />
 </div>
 {% endblock %}

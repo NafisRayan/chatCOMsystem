@@ -2,13 +2,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="login-container">
-    <h2>Login</h2>
-    <form action="{{ url_for('login') }}" method="post">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
+<div class="login-container"
+    style="max-width: 400px; margin: 40px auto; padding: 20px; background-color: #2f3136; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); text-align: center;">
+    <h2 style="color: #ffffff; margin-bottom: 20px;">Login</h2>
+    <form action="{{ url_for('login') }}" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+        <input type="text" name="username" placeholder="Username" required
+            style="padding: 10px; border: 1px solid #484b4f; border-radius: 5px; background-color: #40444b; color: #dcddde; font-size: 14px; outline: none;">
+        <input type="password" name="password" placeholder="Password" required
+            style="padding: 10px; border: 1px solid #484b4f; border-radius: 5px; background-color: #40444b; color: #dcddde; font-size: 14px; outline: none;">
+        <input type="submit" value="Login"
+            style="padding: 10px; border: none; border-radius: 5px; background-color: #7289da; color: #ffffff; font-size: 16px; cursor: pointer; transition: background-color 0.3s;">
     </form>
-    <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+    <p style="color: #dcddde; margin-top: 20px;">Don't have an account? <a href="{{ url_for('register') }}"
+            style="color: #7289da; text-decoration: none; font-weight: bold;">Register</a></p>
 </div>
 {% endblock %}

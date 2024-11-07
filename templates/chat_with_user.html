@@ -2,27 +2,34 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="chat-container">
-    <h2>Send a Message</h2>
-    <form id="messageForm">
-        <label for="receiverInput">To:</label>
-        <input type="text" id="receiverInput" name="receiver" placeholder="Receiver's username" required>
-        <label for="messageInput">Message:</label>
-        <input type="text" id="messageInput" name="message" placeholder="Type your message..." required>
-        <button type="submit">Send</button>
+<div class="chat-container"
+    style="max-width: 600px; margin: 20px auto; padding: 20px; background-color: #2f3136; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+    <h2 style="color: #ffffff; border-bottom: 1px solid #484b4f; padding-bottom: 10px; margin-bottom: 20px;">Send a
+        Message</h2>
+    <form id="messageForm" style="display: flex; flex-direction: column; gap: 15px;">
+        <label for="receiverInput" style="color: #dcddde; font-size: 14px;">To:</label>
+        <input type="text" id="receiverInput" name="receiver" placeholder="Receiver's username" required
+            style="padding: 10px; border: 1px solid #484b4f; border-radius: 5px; background-color: #40444b; color: #dcddde; font-size: 14px; outline: none;">
+
+        <label for="messageInput" style="color: #dcddde; font-size: 14px;">Message:</label>
+        <input type="text" id="messageInput" name="message" placeholder="Type your message..." required
+            style="padding: 10px; border: 1px solid #484b4f; border-radius: 5px; background-color: #40444b; color: #dcddde; font-size: 14px; outline: none;">
+
+        <button type="submit"
+            style="padding: 10px 15px; border: none; border-radius: 5px; background-color: #7289da; color: #ffffff; font-size: 14px; cursor: pointer; transition: background-color 0.3s;">Send</button>
     </form>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
-        document.getElementById('messageForm').onsubmit = function(e) {
+        document.getElementById('messageForm').onsubmit = function (e) {
             e.preventDefault();
             var receiver = document.getElementById('receiverInput').value;
             var message = document.getElementById('messageInput').value;
-            socket.emit('private_message', {receiver: receiver, message: message});
+            socket.emit('private_message', { receiver: receiver, message: message });
             document.getElementById('messageInput').value = ''; // Clear the message input
         };
     });
